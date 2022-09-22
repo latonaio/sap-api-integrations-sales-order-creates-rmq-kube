@@ -2,6 +2,7 @@ package sap_api_caller
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"sap-api-integrations-sales-order-creates-rmq-kube/SAP_API_Caller/requests"
@@ -103,7 +104,8 @@ func (c *SAPAPICaller) callSalesOrderSrvAPIRequirementHeader(api string, header 
 }
 
 func (c *SAPAPICaller) Item(item *requests.Item) {
-	outputDataItem, err := c.callSalesOrderSrvAPIRequirementItem("A_SalesOrderItem", item)
+	url := fmt.Sprintf("A_SalesOrder('%s')/to_Item", item.SalesOrder)
+	outputDataItem, err := c.callSalesOrderSrvAPIRequirementItem(url, item)
 	if err != nil {
 		c.log.Error(err)
 		return
