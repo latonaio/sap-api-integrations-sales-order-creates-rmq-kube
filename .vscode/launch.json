@@ -12,17 +12,17 @@
             "program": "${workspaceRoot}",
             "env": {
                 "SAP_API_BASE_URL": "http://XXX.XX.XX.XXX:8080/sap/opu/odata/sap/",
-                "SAP_USER": "XXXXXXXXXXXXXX",
-                "SAP_PASS": "XXXXXXXXXXXXXX",
+                "SAP_USER": "XXXXXXXXXXX",
+                "SAP_PASS": "XXXXXXXXXXX",
                 "SAP_TOKEN_REFRESH_URL": "http://XXX.XX.XX.XXX:8080/sap/opu/odata/sap/API_SALES_ORDER_SRV/",
                 "SAP_RETRY_MAX_COUNT": "1",
                 "SAP_RETRY_INTERVAL": "500",
-                "RMQ_USER": "XXXXXXXXXXXXXX",
-                "RMQ_PASS": "XXXXXXXXXXXXXX",
-                "RMQ_ADDRESS": "XX.XXX.XXX.XXX",
+                "RMQ_USER": "XXXXXXXXXXX",
+                "RMQ_PASS": "XXXXXXXXXXX",
+                "RMQ_ADDRESS": "XXXXXXXXXXX",
                 "RMQ_PORT": "32094",
-                "RMQ_QUEUE_FROM": "sap-api-integrations-sales-order-creates-queue-from",
-                "RMQ_QUEUE_TO": "sap-api-integrations-sales-order-creates-queue-to",
+                "RMQ_QUEUE_FROM": "sap-api-integlations-sales-order-creates-queue-from",
+                "RMQ_QUEUE_TO": "sap-sql-update-kube",
                 "RMQ_VHOST": "sap"
             }
         }

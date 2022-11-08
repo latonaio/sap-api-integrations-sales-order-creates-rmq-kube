@@ -55,22 +55,20 @@ func callProcess(caller *sap_api_caller.SAPAPICaller, msg rabbitmq.RabbitmqMessa
 			return
 		}
 	}()
-	header, item := extractData(msg.Data())
+	headerItem := extractData(msg.Data())
 	accepter := getAccepter(msg.Data())
-	caller.AsyncPostSalesOrder(header, item, accepter)
+	caller.AsyncPostSalesOrder(headerItem, accepter)
 	return nil
 }
 
 func extractData(data map[string]interface{}) (
-	header *requests.Header,
-	item *requests.Item,
+	headerItem *requests.HeaderItem,
 ) {
 
 	sdc := sap_api_input_reader.ConvertToSDC(data)
 	sap_api_time_value_converter.ChangeTimeFormatToSAPFormatStruct(&sdc)
 
-	header = sdc.ConvertToHeader()
-	item = sdc.ConvertToItem()
+	headerItem = sdc.ConvertToHeaderItem()
 	return
 }
 
@@ -83,7 +81,7 @@ func getAccepter(data map[string]interface{}) []string {
 
 	if accepter[0] == "All" {
 		accepter = []string{
-			"Header", "Item",
+			"HeaderItem",
 		}
 	}
 	return accepter

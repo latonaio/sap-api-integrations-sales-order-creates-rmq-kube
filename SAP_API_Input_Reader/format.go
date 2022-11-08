@@ -4,6 +4,24 @@ import (
 	"sap-api-integrations-sales-order-creates-rmq-kube/SAP_API_Caller/requests"
 )
 
+func (sdc *SDC) ConvertToHeaderItem() *requests.HeaderItem {
+	data := sdc.SalesOrder
+	results := make([]requests.Item, 0, len(data.SalesOrderItem))
+
+	header := sdc.ConvertToHeader()
+
+	for i := range data.SalesOrderItem {
+		results = append(results, *sdc.ConvertToItem(i))
+	}
+
+	return &requests.HeaderItem{
+		Header: *header,
+		ToItem: requests.ToItem{
+			Results: results,
+		},
+	}
+}
+
 func (sdc *SDC) ConvertToHeader() *requests.Header {
 	data := sdc.SalesOrder
 	return &requests.Header{
@@ -59,9 +77,9 @@ func (sdc *SDC) ConvertToHeader() *requests.Header {
 	}
 }
 
-func (sdc *SDC) ConvertToItem() *requests.Item {
+func (sdc *SDC) ConvertToItem(num int) *requests.Item {
 	dataSalesOrder := sdc.SalesOrder
-	data := sdc.SalesOrder.SalesOrderItem
+	data := sdc.SalesOrder.SalesOrderItem[num]
 	return &requests.Item{
 		SalesOrder:              dataSalesOrder.SalesOrder,
 		SalesOrderItem:          data.SalesOrderItem,

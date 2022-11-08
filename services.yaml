@@ -19,7 +19,7 @@ spec:
       containers:
         - name: sap-api-integrations-sales-order-creates-rmq-kube
           image: latonaio/sap-api-integrations-sales-order-creates-rmq-kube
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           volumeMounts:
             - name: data
               mountPath: /var/lib/aion/Data
@@ -29,9 +29,9 @@ spec:
             - name: "SAP_API_BASE_URL"
               value: "http://XXX.XX.XX.XXX:8080/sap/opu/odata/sap/"
             - name: "SAP_USER"
-              value: "XXXXXXXXXXXXXX"
+              value: "XXXXXXXXXXX"
             - name: "SAP_PASS"
-              value: "XXXXXXXXXXXXXX"
+              value: "XXXXXXXXXXX"
             - name: "SAP_TOKEN_REFRESH_URL"
               value: "http://XXX.XX.XX.XXX:8080/sap/opu/odata/sap/API_PRODUCT_SRV"
             - name: "SAP_RETRY_MAX_COUNT"
@@ -39,17 +39,17 @@ spec:
             - name: "SAP_RETRY_INTERVAL"
               value: "500"
             - name: "RMQ_USER"
-              value: "XXXXXXXXXXXXXX"
+              value: "XXXXXXXXXXX"
             - name: "RMQ_PASS"
-              value: "XXXXXXXXXXXXXX"
+              value: "XXXXXXXXXXX"
             - name: "RMQ_ADDRESS"
-              value: "XX.XXX.XXX.XXX"
+              value: "XXXXXXXXXXX"
             - name: "RMQ_PORT"
               value: "32094"
             - name: "RMQ_QUEUE_FROM"
               value: "sap-api-integrations-sales-order-creates-queue-from"
             - name: "RMQ_QUEUE_TO"
-              value: "sap-api-integrations-sales-order-creates-queue-to"
+              value: "sap-sql-update-kube"
             - name: "RMQ_VHOST"
               value: "sap"
           resources:
@@ -82,4 +82,4 @@ spec:
       port: 8080
       protocol: TCP
       targetPort: 8080
-      nodePort: 30512
+      nodePort: 30591

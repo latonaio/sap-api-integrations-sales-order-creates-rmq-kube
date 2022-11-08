@@ -107,12 +107,7 @@ type SDC struct {
 		CustomerTaxClassification1     *string `json:"CustomerTaxClassification1"`
 		TotalCreditCheckStatus         *string `json:"TotalCreditCheckStatus"`
 		BillingDocumentDate            *string `json:"BillingDocumentDate"`
-		HeaderPartner                  struct {
-			PartnerFunction string  `json:"PartnerFunction"`
-			Customer        *string `json:"Customer"`
-			Supplier        *string `json:"Supplier"`
-		} `json:"HeaderPartner"`
-		SalesOrderItem struct {
+		SalesOrderItem                 []struct {
 			SalesOrderItem              string  `json:"SalesOrderItem"`
 			SalesOrderItemCategory      *string `json:"SalesOrderItemCategory"`
 			SalesOrderItemText          *string `json:"SalesOrderItemText"`
@@ -159,42 +154,6 @@ type SDC struct {
 			SDProcessStatus             *string `json:"SDProcessStatus"`
 			DeliveryStatus              *string `json:"DeliveryStatus"`
 			OrderRelatedBillingStatus   *string `json:"OrderRelatedBillingStatus"`
-			ItemPricingElement          struct {
-				PricingProcedureStep           string  `json:"PricingProcedureStep"`
-				PricingProcedureCounter        string  `json:"PricingProcedureCounter"`
-				ConditionType                  *string `json:"ConditionType"`
-				PriceConditionDeterminationDte *string `json:"PriceConditionDeterminationDte"`
-				ConditionCalculationType       *string `json:"ConditionCalculationType"`
-				ConditionBaseValue             *string `json:"ConditionBaseValue"`
-				ConditionRateValue             *string `json:"ConditionRateValue"`
-				ConditionCurrency              *string `json:"ConditionCurrency"`
-				ConditionQuantity              *string `json:"ConditionQuantity"`
-				ConditionQuantityUnit          *string `json:"ConditionQuantityUnit"`
-				ConditionCategory              *string `json:"ConditionCategory"`
-				PricingScaleType               *string `json:"PricingScaleType"`
-				ConditionRecord                *string `json:"ConditionRecord"`
-				ConditionSequentialNumber      *string `json:"ConditionSequentialNumber"`
-				TaxCode                        *string `json:"TaxCode"`
-				ConditionAmount                *string `json:"ConditionAmount"`
-				TransactionCurrency            *string `json:"TransactionCurrency"`
-				PricingScaleBasis              *string `json:"PricingScaleBasis"`
-				ConditionScaleBasisValue       *string `json:"ConditionScaleBasisValue"`
-				ConditionScaleBasisUnit        *string `json:"ConditionScaleBasisUnit"`
-				ConditionScaleBasisCurrency    *string `json:"ConditionScaleBasisCurrency"`
-				ConditionIsManuallyChanged     *bool   `json:"ConditionIsManuallyChanged"`
-			} `json:"ItemPricingElement"`
-			ItemScheduleLine struct {
-				ScheduleLine                  string  `json:"ScheduleLine"`
-				RequestedDeliveryDate         *string `json:"RequestedDeliveryDate"`
-				ConfirmedDeliveryDate         *string `json:"ConfirmedDeliveryDate"`
-				OrderQuantityUnit             *string `json:"OrderQuantityUnit"`
-				ScheduleLineOrderQuantity     *string `json:"ScheduleLineOrderQuantity"`
-				ConfdOrderQtyByMatlAvailCheck *string `json:"ConfdOrderQtyByMatlAvailCheck"`
-				DeliveredQtyInOrderQtyUnit    *string `json:"DeliveredQtyInOrderQtyUnit"`
-				OpenConfdDelivQtyInOrdQtyUnit *string `json:"OpenConfdDelivQtyInOrdQtyUnit"`
-				CorrectedQtyInOrderQtyUnit    *string `json:"CorrectedQtyInOrderQtyUnit"`
-				DelivBlockReasonForSchedLine  *string `json:"DelivBlockReasonForSchedLine"`
-			} `json:"ItemScheduleLine"`
 		} `json:"SalesOrderItem"`
 	} `json:"SalesOrder"`
 	APISchema string   `json:"api_schema"`
